@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  angular_frontend:
+    build: ./Angular
+    container_name: angular_frontend
+    ports:
+      - "4200:4200"  # Map port 4200 on host to port 4200 on Angular container
+    volumes:
+      - ./Angular/src:/app/src
+    command: npm start  # Run the npm start command to serve the Angular app
+
+
+  flask_backend:
+    build: ./flask server
+    container_name: flask_backend
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./flask server:/app
+
+  node_server:
+    build: ./Node Server
+    container_name: node_server
+    ports:
+      - "9992:9992"
+    volumes:
+      - ./Node Server:/app
+    environment:
+      - MONGO_URL=mongodb://mongo:27017/DAT  # Replace DAT with your actual database name
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:

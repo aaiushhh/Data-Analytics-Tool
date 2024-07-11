@@ -11,7 +11,7 @@ app.use(cors({
 }))
 
 
-mongoose.connect("mongodb://localhost:27017/DAT", {
+mongoose.connect("mongodb://mongo:27017/DAT", {
   useNewUrlParser: true,
   useUnifiedTopology: true
 })
@@ -23,6 +23,7 @@ mongoose.connect("mongodb://localhost:27017/DAT", {
   .catch((err) => {
     console.error("Couldn't connect to MongoDB:", err);
   });
+  
 
   app.use(express.json());
   app.use(routes)

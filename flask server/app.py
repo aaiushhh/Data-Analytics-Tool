@@ -134,14 +134,28 @@ def upload_csv():
         
         if file and file.filename.endswith('.csv'):
             filename = file.filename
-            file.save(filename)
-            global data
-            data = pd.read_csv(file)
+            file_path = os.path.join(os.getcwd(), filename)
+            file.save(file_path)
+            
+            # Log the contents of the file for debugging
+            with open(file_path, 'r') as f:
+                file_contents = f.read()
+                print("File contents:", file_contents)
+            
+            global data, data_backup
+            data = pd.read_csv(file_path)
+            data_backup = data.copy(deep=True)
+            os.remove(file_path)  # Clean up the saved file
             return jsonify({"message": f"File '{filename}' uploaded and loaded into data successfully"}), 200
         else:
             return jsonify({"error": "Invalid file format, please upload a CSV file"}), 400
+    except pd.errors.EmptyDataError:
+        return jsonify({"error": "The uploaded file is empty"}), 400
+    except pd.errors.ParserError:
+        return jsonify({"error": "Failed to parse the file. Ensure it is a valid CSV"}), 400
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
     
 if __name__ == '__main__':
     app.run(debug=True)
