@@ -14,8 +14,6 @@ A comprehensive data analytics tool providing functionalities for data manipulat
   - [Flask Backend Setup](#flask-backend-setup)
   - [Node.js Authentication Server Setup](#nodejs-authentication-server-setup)
 - [Usage Instructions](#usage-instructions)
-- [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Features
@@ -41,9 +39,62 @@ A comprehensive data analytics tool providing functionalities for data manipulat
 - Python
 
 ## Setup Instructions
+## Docker Setup
+Build and run the Docker containers for the entire application:
 
-### Clone the Repository
+docker-compose up --build
 
+## Angular Frontend Setup
+If you prefer to run the Angular frontend separately, follow these steps:
+Navigate to the frontend directory:
+cd frontend
+
+Install dependencies:
+npm install
+
+Start the Angular development server:
+ng serve
+
+## Flask Backend Setup
+If you prefer to run the Flask backend separately, follow these steps:
+Navigate to the backend directory:
+cd backend
+
+Create a virtual environment:
+python -m venv venv
+
+Activate the virtual environment:
+On Windows:
+venv\Scripts\activate
+On macOS/Linux:
+source venv/bin/activate
+
+Install dependencies:
+pip install -r requirements.txt
+
+Start the Flask server:
+flask run
+
+## Node.js Authentication Server Setup
+If you prefer to run the Node.js authentication server separately, follow these steps:
+Navigate to the Node.js server directory:
+cd auth-server
+
+Install dependencies:
+npm install
+
+Start the Node.js server:
+node server.js
+
+### Usage Instructions
+Open the Angular frontend in your browser at http://localhost:4200.
+Use the login/signup feature to authenticate.
+Upload a CSV file using the drag-and-drop feature.
+Perform data transformations and visualizations using the provided tools.
+View and manage your profile.
+
+## Contact
+For any queries or issues, please contact eyushhonhisway@gmail.com.
 ```bash
 git clone https://github.com/eyu.shh/data-analytics-tool.git
 cd data-analytics-tool
