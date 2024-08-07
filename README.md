@@ -8,7 +8,6 @@ A comprehensive data analytics tool providing functionalities for data manipulat
 - [Technologies Used](#technologies-used)
 - [Prerequisites](#prerequisites)
 - [Setup Instructions](#setup-instructions)
-  - [Clone the Repository](#clone-the-repository)
   - [Docker Setup](#docker-setup)
   - [Angular Frontend Setup](#angular-frontend-setup)
   - [Flask Backend Setup](#flask-backend-setup)
